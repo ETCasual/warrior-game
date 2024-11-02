@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: ocean;
+  src: url(/ocean_rush.otf);
+}
+
+.stack span {
+  /* font-weight: bold; */
+  /* grid-row-start: 1;
+  grid-column-start: 1; */
+  --stack-height: calc(100% / var(--stacks) - 0px);
+  --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
+  clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
+  animation: glitch 2s ease infinite 2s alternate-reverse;
+}
+
+.stack-mini span {
+  font-weight: bold;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  --stack-height: calc(100% / var(--stacks) - 1px);
+  --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
+  clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
+  animation:
+      /* stack 1000ms cubic-bezier(0.46, 0.29, 0, 1.24) 1 backwards
+        calc(var(--index) * 120ms), */ glitch
+    2s ease infinite 2s alternate-reverse;
+}
+
+.stack-mini span:nth-child(odd) {
+  --glitch-translate: 10px;
+}
+.stack-mini span:nth-child(even) {
+  --glitch-translate: -10px;
+}
+
+.stack span:nth-child(odd) {
+  --glitch-translate: 38px;
+}
+.stack span:nth-child(even) {
+  --glitch-translate: -38px;
+}
+
+@keyframes stack {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    text-shadow:
+      -5px 10px 0 red,
+      5px -10px 0 blue;
+  }
+  60% {
+    opacity: 0.5;
+    transform: translate(50%, 50%);
+  }
+  80% {
+    transform: none;
+    opacity: 1;
+    text-shadow:
+      5px -10px 0 red,
+      -5px 10px 0 blue;
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow:
+      -2px 5px 0 red,
+      2px -5px 0 blue;
+    transform: translate(var(--glitch-translate), 10px);
+  }
+  2% {
+    text-shadow:
+      2px -5px 0 red,
+      -2px 5px 0 blue;
+  }
+  4%,
+  100% {
+    text-shadow: none;
+    transform: none;
+  }
+}
+
+.anim-logo {
+  animation: loading-logo 3s ease-in-out infinite;
+}
+
+@keyframes loading-logo {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
