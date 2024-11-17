@@ -49,7 +49,7 @@ const PanelPage = () => {
 
   return currentQStatus === "success" ? (
     <main className="flex min-h-screen flex-col gap-3 bg-[url('/BG_BLANK.jpg')] bg-cover bg-center bg-no-repeat px-5 py-10">
-      <div className="flex w-full flex-col gap-2 rounded-lg bg-red-300/70 p-2">
+      <div className="grid w-full grid-cols-2 gap-2 rounded-lg bg-red-300/70 p-2">
         {Object.keys(staticData).map((s) => (
           <button
             onClick={async () => {

@@ -13,6 +13,7 @@ export default function Home() {
   const [currentQ, setCurrentQ] = useState<Question>("q1");
   const currentWord = staticData[currentQ].word;
   const currentAnswers = staticData[currentQ].answers;
+  const letters = staticData[currentQ].letters;
 
   const dbRef = doc(db, "game", currentQ);
 
@@ -49,8 +50,11 @@ export default function Home() {
             </div>
 
             <div
-              className={`grid max-h-[350px] w-full flex-grow ${currentQ === "q6" ? "grid-cols-3 grid-rows-3" : "grid-cols-2 grid-rows-3"} gap-x-6 gap-y-4`}
+              className={`relative grid max-h-[350px] w-full flex-grow ${currentQ === "q6" ? "grid-cols-3 grid-rows-3" : "grid-cols-2 grid-rows-3"} gap-x-6 gap-y-4`}
             >
+              <div className="absolute right-0 -translate-y-[115%] font-[Arial] text-xl text-white">
+                ({letters}-letter words)
+              </div>
               {Object.keys(currentAnswers).map((k) => {
                 return (
                   <button
