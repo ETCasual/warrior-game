@@ -56,9 +56,13 @@ const PanelPage = () => {
               await reset().then(() => updateCurrentQ(s));
             }}
             key={s}
-            className="w-full rounded-lg bg-white py-2 text-center font-[Arial] text-2xl uppercase shadow-lg"
+            className="w-full rounded-lg bg-white py-2 text-center font-[Arial] text-xl shadow-lg"
           >
-            {s}
+            {s === "q9" ? (
+              <span>Q9 (4-letter)</span>
+            ) : (
+              <span className="uppercase">{s}</span>
+            )}
           </button>
         ))}
       </div>
