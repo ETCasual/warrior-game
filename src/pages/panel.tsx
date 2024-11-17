@@ -43,6 +43,7 @@ const PanelPage = () => {
       a4: false,
       a5: false,
       a6: false,
+      a7: false,
     });
   };
 
@@ -72,10 +73,10 @@ const PanelPage = () => {
                 onClick={async () =>
                   await openAnswer(k, answersData[k] as boolean)
                 }
-                key={v.word}
+                key={v?.word}
                 className={`w-full rounded-lg ${answersData[k] ? "bg-green-400" : "bg-red-400"} py-2 text-center font-[Arial] text-2xl uppercase shadow-lg`}
               >
-                {v.word}
+                {v?.word}
               </button>
             );
           })}
